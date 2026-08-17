@@ -1,0 +1,181 @@
+{
+  "info": {
+    "name": "EventPass - Login (Equipo 04)",
+    "description": "Pruebas automatizadas de login con credenciales inválidas contra el endpoint POST /api/login.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "CP-01 - Contraseña incorrecta",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"correo\": \"usuario.prueba@correo.com\",\n  \"contrasena\": \"ClaveIncorrecta999\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "login"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('CP-01: status code es 401', function () {",
+              "    pm.response.to.have.status(401);",
+              "});",
+              "",
+              "pm.test('CP-01: exitoso es false', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.exitoso).to.eql(false);",
+              "});",
+              "",
+              "pm.test('CP-01: mensaje es Credenciales incorrectas', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.mensaje).to.eql('Credenciales incorrectas');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CP-02 - Correo no registrado",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"correo\": \"noexiste@correo.com\",\n  \"contrasena\": \"ClaveCualquiera123\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "login"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('CP-02: status code es 401', function () {",
+              "    pm.response.to.have.status(401);",
+              "});",
+              "",
+              "pm.test('CP-02: exitoso es false', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.exitoso).to.eql(false);",
+              "});",
+              "",
+              "pm.test('CP-02: mensaje es Credenciales incorrectas', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.mensaje).to.eql('Credenciales incorrectas');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CP-03 - Campos vacíos",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"correo\": \"\",\n  \"contrasena\": \"\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "login"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('CP-03: status code es 400', function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "pm.test('CP-03: exitoso es false', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.exitoso).to.eql(false);",
+              "});",
+              "",
+              "pm.test('CP-03: mensaje pide campos obligatorios', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.mensaje).to.eql('Los campos son obligatorios');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "CP-04 - Formato de correo inválido",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"correo\": \"usuario@correo\",\n  \"contrasena\": \"Clave123!\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "login"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('CP-04: status code es 400', function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "",
+              "pm.test('CP-04: exitoso es false', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.exitoso).to.eql(false);",
+              "});",
+              "",
+              "pm.test('CP-04: mensaje indica formato inválido', function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.mensaje).to.eql('Formato de correo inválido');",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
