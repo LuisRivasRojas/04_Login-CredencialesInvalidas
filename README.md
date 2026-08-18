@@ -4,7 +4,7 @@ Este repositorio contiene la implementación del módulo de inicio de sesión de
 
 ---
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```text
 04_Login-CredencialesInvalidas/
@@ -28,7 +28,7 @@ Este repositorio contiene la implementación del módulo de inicio de sesión de
 
 ---
 
-## 🚀 Instrucciones de Ejecución
+## Instrucciones de Ejecución
 
 ### 1. Iniciar el Backend (Spring Boot)
 Desde la consola o desde tu IDE (IntelliJ IDEA / Eclipse / VS Code):
@@ -47,7 +47,7 @@ Simplemente abre el archivo `frontend/index.html` en tu navegador web o mediante
 
 ---
 
-## 🧪 Matriz de Casos de Prueba Manuales (QA Test Suite)
+## Matriz de Casos de Prueba Manuales (QA Test Suite)
 
 Utiliza los siguientes datos de prueba para realizar la ejecución manual desde la interfaz web y registrar tus resultados de **PASS / FAIL**:
 
@@ -62,7 +62,7 @@ Utiliza los siguientes datos de prueba para realizar la ejecución manual desde 
 
 ---
 
-## 🤖 Elementos Preparados para Automatización (QA Selectors)
+## Elementos Preparados para Automatización (QA Selectors)
 
 Si vas a automatizar pruebas con **Selenium, Cypress o Playwright**, puedes utilizar estos selectores fijos por ID:
 
@@ -72,9 +72,3 @@ Si vas a automatizar pruebas con **Selenium, Cypress o Playwright**, puedes util
 - **Botón Mostrar/Ocultar Clave:** `#togglePassword`
 - **Contenedor Mensaje de Error:** `#errorMessage` (texto interno: `#errorText`)
 - **Contenedor Mensaje de Éxito:** `#successMessage` (texto interno: `#successText`)
-
----
-
-## 🎨 Paleta de Colores
-- **Púrpura / Azul Noche:** `#262262`
-- **Naranja Vibrante:** `#f16623`
